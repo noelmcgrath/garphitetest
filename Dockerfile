@@ -10,7 +10,7 @@ RUN apt-get -y update
 ADD cert.crt /root/
 
 # Prerequisites
-RUN apt-get -y install python-django-tagging python-simplejson python-memcache python-ldap python-cairo python-pysqlite2 python-support python-pip gunicorn python-dev libpq-dev build-essential python-twisted pytz
+RUN apt-get -y install python-django-tagging python-simplejson python-memcache python-ldap python-cairo python-pysqlite2 python-support python-pip gunicorn python-dev libpq-dev build-essential python-twisted
 
 RUN pip --cert /root/cert.crt install Django
 
@@ -26,6 +26,7 @@ RUN git config --global http.sslVerify false
 RUN git clone https://github.com/etsy/statsd.git /src/statsd
 
 # Install Whisper, Carbon and Graphite-Web
+RUN pip install pytz
 RUN pip install whisper
 RUN pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/lib" carbon
 RUN pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/webapp" graphite-web
