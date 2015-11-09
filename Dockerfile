@@ -10,7 +10,7 @@ RUN apt-get -y update
 ADD cert.crt /root/
 
 # Prerequisites
-RUN apt-get -y install python-django-tagging pytz python-simplejson python-memcache python-ldap python-cairo python-pysqlite2 python-support python-pip gunicorn python-dev libpq-dev build-essential python-twisted 
+RUN apt-get -y install python-django-tagging python-simplejson python-memcache python-ldap python-cairo python-pysqlite2 python-support python-pip gunicorn python-dev libpq-dev build-essential python-twisted pytz
 
 RUN pip --cert /root/cert.crt install Django
 
